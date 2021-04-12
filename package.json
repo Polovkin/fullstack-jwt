@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-server": "nodemon server.js"
+    "start-server": "nodemon server.js",
+    "build": "react-jwt-auth react-scripts build"
   },
   "author": "",
   "license": "ISC",

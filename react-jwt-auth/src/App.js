@@ -36,7 +36,7 @@ class App extends Component {
 
   componentDidMount() {
     const user = this.props.user;
-
+    console.log(this.props.user);
     if (user) {
       this.setState({
         currentUser: user,
@@ -52,6 +52,7 @@ class App extends Component {
 
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+
 
     return (
       <Router history={history}>
