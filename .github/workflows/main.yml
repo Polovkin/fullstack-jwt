@@ -23,7 +23,17 @@ jobs:
         #  run: npm ci
         #- name: Run build
         #  run: npm run build
-
+        
+        #Copy
+        - name: Copy single file to remote
+          uses: garygrossgarten/github-action-scp@release
+          with:
+            local: .gitignore
+            remote: /var/www/polova.fun/test
+            host: ${{ secrets.HOST }}
+            privateKey  : ${{ secrets.SSH_KEY }}
+            username: ${{ secrets.USERNAME }}
+            passphrase: ${{ secrets.PASSPHRASE }}
         # Deploy  
         - name: executing remote ssh commands using password
           uses: appleboy/ssh-action@master
@@ -34,4 +44,4 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             port: ${{ secrets.PORT }}
             script: |
-                pm2 status
+                pm2 status    
