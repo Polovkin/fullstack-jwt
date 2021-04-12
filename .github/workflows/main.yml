@@ -28,13 +28,12 @@ jobs:
         - name: Copy single file to remote
           uses: garygrossgarten/github-action-scp@release
           with:
-            local: .gitignore
-            remote: /var/www/polova.fun/test
+            local: .next
+            remote: test
             host: ${{ secrets.HOST }}
             privateKey  : ${{ secrets.SSH_KEY }}
             username: ${{ secrets.USERNAME }}
             passphrase: ${{ secrets.PASSPHRASE }}
-            password: ${{ secrets.PASSWORD }}
         # Deploy  
         - name: executing remote ssh commands using password
           uses: appleboy/ssh-action@master
