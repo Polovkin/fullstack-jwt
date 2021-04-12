@@ -44,4 +44,9 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             port: ${{ secrets.PORT }}
             script: |
-                pm2 status    
+                cd /var/www/polova.fun/frontend/
+                pm2 stop next
+                pm2 start npm --name "next" -- start
+                git pull
+                yarn install
+                    
