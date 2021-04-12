@@ -17,13 +17,23 @@ jobs:
           with:
             node-version: ${{ matrix.node-version }}
         # Build
-        #- name: Run npm
-        #  run: npm i
-        #- name: Run CI
-        #  run: npm ci
-        #- name: Run build
-        #  run: npm run build
-
+        - name: Run npm
+          run: npm i
+        - name: Run CI
+          run: npm ci
+        - name: Run build
+          run: npm run build
+        
+        #Copy
+        - name: Copy single file to remote
+          uses: garygrossgarten/github-action-scp@release
+          with:
+            local: .next
+            remote: test
+            host: ${{ secrets.HOST }}
+            privateKey  : ${{ secrets.SSH_KEY }}
+            username: ${{ secrets.USERNAME }}
+            passphrase: ${{ secrets.PASSPHRASE }}
         # Deploy  
         - name: executing remote ssh commands using password
           uses: appleboy/ssh-action@master
@@ -34,4 +44,4 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             port: ${{ secrets.PORT }}
             script: |
-                pm2 status
+                pm2 status    
