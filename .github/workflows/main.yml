@@ -28,7 +28,7 @@ jobs:
         - name: Copy single file to remote
           uses: garygrossgarten/github-action-scp@release
           with:
-            local: .next
+            local: build
             remote: test
             host: ${{ secrets.HOST }}
             privateKey  : ${{ secrets.SSH_KEY }}
