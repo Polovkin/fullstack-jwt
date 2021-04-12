@@ -45,8 +45,7 @@ jobs:
             port: ${{ secrets.PORT }}
             script: |
                 cd /var/www/polova.fun/frontend/
-                pm2 stop next
-                pm2 start npm --name "next" -- start
+                pm2 restart next
                 git pull
                 yarn install
                     
